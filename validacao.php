@@ -6,7 +6,7 @@
         exit;
     }
 
-    if(campos_em_branco()) {
+    if(campos_em_branco_login()) {
         header('location:index.php?codigo=2');
         exit;
     }
@@ -55,5 +55,5 @@
     $_SESSION['email']  = $login_email;
     $_SESSION['senha']  = $login_senha;
 
-    header('location:cadastro.php');
+    header('location:reservas.php');
 ?>

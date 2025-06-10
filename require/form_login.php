@@ -1,4 +1,4 @@
-<h2>Informe seus dados para acessar o sistema de cadastro</h2>
+<h2>Informe seus dados para acessar o sistema de reservas</h2>
 
 <form action="validacao.php" method="post">
     <p>

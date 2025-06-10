@@ -10,7 +10,8 @@
 
     <nav>
         <a href="index.php">Home</a>
-        <a href="cadastro.php">Página de Cadastros</a>
+        <a href="reservas.php">Reservas</a>
+        <a href="quartos.php">Quartos</a>
         <a href="logout.php">Logout</a>
     </nav>
 

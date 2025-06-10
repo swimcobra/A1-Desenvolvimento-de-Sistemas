@@ -3,7 +3,7 @@
         if(!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
             require_once 'form_login.php';
         } else {
-            echo "<h2>Você está logado!</h2>";
+            echo "<h2>Olá " . $_SESSION['nome'] . ", você está logado!</h2>";
         }
     }
 
@@ -28,10 +28,13 @@ function verificar_codigo() {
                 $msg = "<h3>Erro na estrutura da consulta SQL. Verifique com o suporte ou tente novamente mais tarde</h3>";
                 break;
             case 4:
-                $msg = "Erro ao excluir a tarefa selecionada. Verifique com o suporte ou tente novamente mais tarde";
+                $msg = "<h3>Erro ao excluir a tarefa selecionada. Verifique com o suporte ou tente novamente mais tarde</h3>";
                 break;
             case 5:
-                $msg = "Erro ao cadastar tarefa. Verifique com o suporte ou tente novamente mais tarde";
+                $msg = "<h3>Erro ao cadastar reserva. Verifique com o suporte ou tente novamente mais tarde</h3>";
+                break;
+            case 6:
+                $msg = "<h3>Hospede Cadastrado com sucesso!</h3>";
                 break;
             default:
                 $msg = "";
@@ -45,7 +48,11 @@ function verificar_codigo() {
         return $_SERVER['REQUEST_METHOD'] !== 'POST';
     }
 
-    function campos_em_branco() {
+    function campos_em_branco_login() {
         return empty($_POST['email']) || empty($_POST['senha']);
+    }
+
+    function campos_em_branco_cadastro() {
+        return empty($_POST['nome']) || empty($_POST['cpf']) || empty($_POST['email']) || empty($_POST['senha']);
     }
 ?>
