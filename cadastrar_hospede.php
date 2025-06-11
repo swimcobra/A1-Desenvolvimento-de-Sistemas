@@ -19,6 +19,32 @@
     require_once 'require/conexao.php';
     $conn = conectar_banco();
 
+    $query = "SELECT * FROM hospedes WHERE email = ? OR cpf = ?";
+
+    $stmt = mysqli_prepare($conn, $query);
+
+    if(!$stmt) {
+        header('location:index.php?codigo=3');
+        exit;
+    }
+
+    mysqli_stmt_bind_param($stmt, "ss", $email, $cpf);
+
+    $result = mysqli_stmt_execute($stmt);
+
+    if(!$result) {
+        header('location.index.php?codigo=3');
+        exit;
+    }
+
+    mysqli_stmt_store_result($stmt);
+    $linhas = mysqli_stmt_num_rows($stmt);
+
+    if($linhas > 0) {
+        header('location:cadastro.php?codigo=7');
+        exit;
+    }
+
     $sql = "INSERT INTO hospedes (nome, cpf, email, senha) VALUES (?, ?, ?, ?)";
 
     $stmt = mysqli_prepare($conn, $sql);

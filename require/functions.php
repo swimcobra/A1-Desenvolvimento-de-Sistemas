@@ -36,6 +36,9 @@ function verificar_codigo() {
             case 6:
                 $msg = "<h3>Hospede Cadastrado com sucesso!</h3>";
                 break;
+            case 7:
+                $msg = "<h3>CPF ou E-mail já cadastrado</h3>";
+                break;
             default:
                 $msg = "";
                 break;

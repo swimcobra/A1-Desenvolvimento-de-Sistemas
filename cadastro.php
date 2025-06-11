@@ -8,6 +8,11 @@
 <body>
     <h1>Cadastro</h1>
 
+    <?php 
+        require_once 'require/functions.php'; 
+        verificar_codigo(); 
+    ?>
+
     <form action="cadastrar_hospede.php" method="post">
     
         <p>
