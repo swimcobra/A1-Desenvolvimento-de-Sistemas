@@ -37,25 +37,18 @@
         echo            "<th>Número</th>";
         echo            "<th>Tipo</th>";
         echo            "<th>Preço</th>";
-        echo            "<th>Disponibilidade</th>";
         echo        "</tr>";
         while($quarto = mysqli_fetch_assoc($result)) {
             $id_quarto          = $quarto['id_quarto'];
             $numero_quarto      = $quarto['numero'];
             $tipo_quarto        = $quarto['tipo'];
             $preco_quarto       = $quarto['preco'];
-            if($quarto['disponivel'] == 0) {
-                $disponivel_quarto = "Ocupado";
-            } else {
-                $disponivel_quarto = "Disponível";
-            }
 
             echo "<tr>";
             echo    "<td> $id_quarto </td>"; 
             echo    "<td> $numero_quarto </td>"; 
             echo    "<td> $tipo_quarto </td>"; 
             echo    "<td> $preco_quarto </td>"; 
-            echo    "<td> $disponivel_quarto </td>"; 
             echo "</tr>";
         }
         echo "</table>";

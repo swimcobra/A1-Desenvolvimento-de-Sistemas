@@ -8,6 +8,14 @@
 <body>
     <h1>Cadastro</h1>
 
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="cadastro.php">Cadastre-se</a>
+        <a href="reservas.php">Reservas</a>
+        <a href="quartos.php">Quartos</a>
+        <a href="logout.php">Logout</a>
+    </nav>
+    
     <?php 
         require_once 'require/functions.php'; 
         verificar_codigo(); 

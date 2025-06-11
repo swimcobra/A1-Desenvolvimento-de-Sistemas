@@ -22,13 +22,13 @@ function verificar_codigo() {
                 $msg = "<h3>Usuário ou Senha inválidos. Por favor, tente novamente</h3>";
                 break;
             case 2:
-                $msg = "<h3>Por favor, preencha todos os campos do form de login</h3>";
+                $msg = "<h3>Por favor, preencha todos os campos do formulário</h3>";
                 break;
             case 3:
                 $msg = "<h3>Erro na estrutura da consulta SQL. Verifique com o suporte ou tente novamente mais tarde</h3>";
                 break;
             case 4:
-                $msg = "<h3>Erro ao excluir a tarefa selecionada. Verifique com o suporte ou tente novamente mais tarde</h3>";
+                $msg = "<h3>Erro ao excluir a reserva selecionada. Verifique com o suporte ou tente novamente mais tarde</h3>";
                 break;
             case 5:
                 $msg = "<h3>Erro ao cadastar reserva. Verifique com o suporte ou tente novamente mais tarde</h3>";
@@ -38,6 +38,30 @@ function verificar_codigo() {
                 break;
             case 7:
                 $msg = "<h3>CPF ou E-mail já cadastrado</h3>";
+                break;
+            case 8:
+                $msg = "<h3>Quarto está ocupado no período informado</h3>";
+                break;
+            case 9:
+                $msg = "<h3>Erro ao realizar Cadastro. Verifique com o suporte ou tente novamente mais tarde</h3>";
+                break;
+            case 10:
+                $msg = "<h3>Reserva Cadastrada com sucesso!</h3>";
+                break;
+            case 11:
+                $msg = "<h3>Você não possui permissão para excluir a reserva informada</h3>";
+                break;
+            case 12:
+                $msg = "<h3>Você não possui permissão para editar a reserva informada</h3>";
+                break;
+            case 13:
+                $msg = "<h3>Reserva não encontrada. Verifique com o suporte ou tente novamente mais tarde</h3>";
+                break;
+            case 14:
+                $msg = "<h3>Erro ao editar informações da reserva. Verifique com o suporte ou tente mais tarde</h3>";
+                break;
+            case 15:
+                $msg = "<h3>Reserva Editada com sucesso!</h3>";
                 break;
             default:
                 $msg = "";
@@ -57,5 +81,9 @@ function verificar_codigo() {
 
     function campos_em_branco_cadastro() {
         return empty($_POST['nome']) || empty($_POST['cpf']) || empty($_POST['email']) || empty($_POST['senha']);
+    }
+
+    function campos_em_branco_reserva() {
+        return empty($_POST['checkIn']) || empty($_POST['checkOut']) || empty($_POST['quarto_id']);
     }
 ?>

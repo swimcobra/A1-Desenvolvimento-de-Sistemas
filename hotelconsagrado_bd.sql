@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/06/2025 às 21:09
+-- Tempo de geração: 11/06/2025 às 19:19
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `hospedes` (
   `id_hospede` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
-  `cpf` varchar(11) NOT NULL,
+  `cpf` varchar(20) NOT NULL,
   `email` varchar(80) NOT NULL,
   `senha` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -40,7 +40,8 @@ CREATE TABLE `hospedes` (
 --
 
 INSERT INTO `hospedes` (`id_hospede`, `nome`, `cpf`, `email`, `senha`) VALUES
-(3, 'Teste', '12345678900', 'teste@gmail.com', 'teste123');
+(3, 'Teste', '12345678900', 'teste@gmail.com', 'teste123'),
+(4, 'Lucca Alves de Souza Anderle', '11111111111', 'lucca@gmail.com', 'lucca123');
 
 -- --------------------------------------------------------
 
@@ -52,22 +53,21 @@ CREATE TABLE `quartos` (
   `id_quarto` int(11) NOT NULL,
   `numero` int(11) NOT NULL,
   `tipo` varchar(20) NOT NULL,
-  `preco` decimal(10,0) NOT NULL,
-  `disponivel` tinyint(1) NOT NULL
+  `preco` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Despejando dados para a tabela `quartos`
 --
 
-INSERT INTO `quartos` (`id_quarto`, `numero`, `tipo`, `preco`, `disponivel`) VALUES
-(1, 101, 'Solteiro', 120, 1),
-(2, 102, 'Solteiro', 120, 1),
-(3, 103, 'Casal', 200, 1),
-(4, 104, 'Luxo', 300, 1),
-(5, 105, 'Casal', 200, 1),
-(6, 106, 'Solteiro', 120, 1),
-(7, 107, 'Solteiro', 120, 1);
+INSERT INTO `quartos` (`id_quarto`, `numero`, `tipo`, `preco`) VALUES
+(1, 101, 'Solteiro', 120),
+(2, 102, 'Solteiro', 120),
+(3, 103, 'Casal', 200),
+(4, 104, 'Luxo', 300),
+(5, 105, 'Casal', 200),
+(6, 106, 'Solteiro', 120),
+(7, 107, 'Solteiro', 120);
 
 -- --------------------------------------------------------
 
@@ -82,6 +82,14 @@ CREATE TABLE `reservas` (
   `hospede_id` int(11) NOT NULL,
   `quarto_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Despejando dados para a tabela `reservas`
+--
+
+INSERT INTO `reservas` (`id_reserva`, `checkIn`, `checkOut`, `hospede_id`, `quarto_id`) VALUES
+(5, '2025-06-12', '2025-06-18', 3, 1),
+(8, '2025-06-11', '2025-06-18', 4, 3);
 
 --
 -- Índices para tabelas despejadas
@@ -115,7 +123,7 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de tabela `hospedes`
 --
 ALTER TABLE `hospedes`
-  MODIFY `id_hospede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_hospede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `quartos`
@@ -127,7 +135,7 @@ ALTER TABLE `quartos`
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restrições para tabelas despejadas
