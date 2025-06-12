@@ -51,11 +51,11 @@ A partir da página incial do phpMyAdmin, clique no botão importar, localizado 
 ### Configurar Conexão com o Banco de Dados:
 
 Abra o arquivo /require/conexao.php, ele estará com o seguinte código:
-
+```
 <?php 
 function conectar_banco() {
 
-    $servidor   = 'localhost:3306'; --> Conferir qual porta está sendo utilizada pelo MySql no XAMPP control panel e trocar caso necessário
+    $servidor   = 'localhost:3306'; **Conferir qual porta está sendo utilizada pelo MySql no XAMPP control panel e trocar caso necessário**
     $usuario    = 'root';
     $senha      = '';
     $banco      = 'hotelconsagrado_bd';   
@@ -70,7 +70,7 @@ function conectar_banco() {
 }
 
 ?>
-
+```
 
 ## Acessar o Sistema:
 
