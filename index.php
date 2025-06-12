@@ -20,9 +20,10 @@
     <hr>
     <main>
         <?php
+            //Garante que o arquivos functions será incluído apenas uma vez
             require_once 'require/functions.php';
             verificar_codigo();
-            session_start();
+            session_start(); //Inicia a sessão PHP que permite acessar dados entre paginas
             incluir_form_login();
         ?>
     </main>
