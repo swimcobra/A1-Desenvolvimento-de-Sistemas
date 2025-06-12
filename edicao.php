@@ -2,21 +2,24 @@
     require_once 'require/lock.php';
     require_once 'require/functions.php';
     require_once 'require/conexao.php';
-
+     //Verifica  se o ID da reserva foi passado pela URL
     if(!isset($_GET['id_reserva'])) {
         header('location:reservas.php?codigo=0');
         exit;
     }
-
+    //Verifica se o usuario logado é o dono da reserva
     if($_SESSION['id'] != (int)$_GET['id_hospede']) {
         header('location:reservas.php?codigo=12');
         exit;
     }
 
+    //Captura os parametros da URL e converte para inteiro
     $id_reserva = (int)$_GET['id_reserva'];
     $id_hospede = (int)$_GET['id_hospede'];
 
+    Abre conexão com bd
     $conn = conectar_banco();
+
 
     $query = "SELECT checkIn, checkOut, quarto_id FROM reservas WHERE id_reserva = ?";
     $stmt = mysqli_prepare($conn, $query);
@@ -26,14 +29,17 @@
         exit;
     }
 
+    //Vincula o parametro da reserva
     mysqli_stmt_bind_param($stmt, "i", $id_reserva);
+    //Executa a consulta
     mysqli_stmt_execute($stmt);
+    //Pega o resultado
     $result = mysqli_stmt_get_result($stmt);
     $dados = mysqli_fetch_assoc($result);
-
+    //Fecha a consulta e a conexão com o banco
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
-
+    //Verifica se encontrou os dados da reserva
     if(!$dados) {
         header('lcoation:reservas?codigo=13');
         exit;
