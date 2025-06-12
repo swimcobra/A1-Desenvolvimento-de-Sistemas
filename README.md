@@ -33,7 +33,7 @@ Comunicação com Banco de Dados: Utiliza mysqli com Prepared Statements para to
 
 
 ### Passos para Configuração
-Clone o Repositório:
+### Clone o Repositório:
 
 No terminal:
 
@@ -41,8 +41,9 @@ cd \xampp\htdocs
 git clone https://github.com/swimcobra/A1-Desenvolvimento-de-Sistemas
 
 
-
 ### Configurar o Banco de Dados:
+
+Inicie o servidor web (Apache) e o MySQL através do XAMPP control panel.
 
 Abra o phpMyAdmin: http://localhost/phpmyadmin/ ou se preferir, pode abrir clicando em "admin" na linha do MySql no XAMPP control panel
 
@@ -73,8 +74,6 @@ function conectar_banco() {
 ```
 
 ## Acessar o Sistema:
-
-Inicie o servidor web (Apache) e o MySQL através do XAMPP control panel.
 
 Abra seu navegador e navegue até a pasta do projeto http://localhost/A1-Desenvolvimento-de-Sistemas
 
