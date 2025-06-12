@@ -1,3 +1,4 @@
+# Feito por Lucca Anderle e Matheus Machado 
 # Sistema de Gestão de Reservas e Hóspedes
 Este é um sistema web básico desenvolvido em PHP, MySQL e HTML/CSS para gerenciar reservas de hotel e cadastros de hóspedes.
 
