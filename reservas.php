@@ -43,13 +43,20 @@
             require_once 'require/conexao.php';
             require_once 'require/functions.php';
             verificar_codigo();
+            //Cria a conexão com o BD
             $conn = conectar_banco();
+            //Recupera o ID do usuario
             $id = $_SESSION['id'];
+            //Monta uma consulta para buscar as reservas do hospede
             $sql = "SELECT * FROM reservas INNER JOIN hospedes ON reservas.hospede_id = hospedes.id_hospede WHERE hospede_id = $id";
+            //Executa a query
             $result = mysqli_query($conn, $sql);
+            //Verfica se nenhuma reserva foi encontrada
             if(mysqli_affected_rows($conn) <= 0) {
+                //Além de encerrar exibe msg
                 exit("<h3>Não existem reservas cadastradas no seu nome</h3>");
             }
+            //Exibe a tabela
             echo "<h3>Lista de Reservas</h3>";
             echo    "<table>";
             echo        "<tr>";
@@ -59,18 +66,22 @@
             echo            "<th>Id do Hospede</th>";
             echo            "<th>Id do Quarto</th>";
             echo        "</tr>";
+            //loop para exibir cada linha da tabela
             while($reserva = mysqli_fetch_assoc($result)) {
+                //Pega os dados de cada reserva
                 $id_reserva     = $reserva['id_reserva'];
                 $data_checkIn   = $reserva['checkIn'];
                 $data_checkOut  = $reserva['checkOut'];
                 $id_hospede     = $reserva['hospede_id'];
                 $id_quarto      = $reserva['quarto_id'];
+                //Exibe uma linha na tabela com os dados da reserva
                 echo "<tr>";
                 echo    "<td>" . $id_reserva . "</td>";
                 echo    "<td>" . $data_checkIn . "</td>";
                 echo    "<td>" . $data_checkOut . "</td>";
                 echo    "<td>" . $id_quarto . "</td>";
                 echo    "<td>" . $id_hospede . "</td>";
+                //Adiciona botoes para editar e excluir
                 echo    '<td class="editar"><a class="editar" href="edicao.php?id_reserva=' . $id_reserva . '&id_hospede=' . $id_hospede . '">Editar</a></td>';
                 echo    '<td class="excluir"><a class="excluir" href="excluir_reserva.php?id_reserva=' . $id_reserva . '&id_hospede=' . $id_hospede . '">Excluir</a></td>';
                 echo "</tr>";
