@@ -1,5 +1,5 @@
 <?php
-    require_once 'require/functions.php';
+    require_once 'require/functions.php';//teste
 
     if(form_nao_enviado()) {
         header('location:cadastro.php?codigo=0');
