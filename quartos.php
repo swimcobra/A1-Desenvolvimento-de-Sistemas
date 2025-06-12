@@ -22,9 +22,13 @@
             require_once 'require/conexao.php';
             require_once 'require/functions.php';
             verificar_codigo();
+            //Abre a conexão com o BD
             $conn = conectar_banco();
+            //Monta a consulta
             $sql = "SELECT * FROM quartos";
+            //Executa a consulta    
             $result = mysqli_query($conn, $sql);
+            //Verifica se nenhum quarto foi retornado da consulta
             if(mysqli_affected_rows($conn) <= 0) {
                 exit("<h3>Não existem quartos cadastrados</h3>");
             }
@@ -36,11 +40,13 @@
             echo            "<th>Tipo</th>";
             echo            "<th>Preço</th>";
             echo        "</tr>";
+            //Percorre cada linha retornada da consulta
             while($quarto = mysqli_fetch_assoc($result)) {
                 $id_quarto          = $quarto['id_quarto'];
                 $numero_quarto      = $quarto['numero'];
                 $tipo_quarto        = $quarto['tipo'];
                 $preco_quarto       = $quarto['preco'];
+                //Exibe os dados do quarto em uma linha
                 echo "<tr>";
                 echo    "<td> $id_quarto </td>";
                 echo    "<td> $numero_quarto </td>";
