@@ -1,19 +1,22 @@
 <?php
+    //Função para incluir o formulário de login se o usuário não estiver autenticado
     function incluir_form_login() {
         if(!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+            //Se o usuário não estiver logado, exibe o formulário de login
             require_once 'form_login.php';
         } else {
+            //Se estiver logado, mostra uma saudação com o nome do usuário
             echo "<h2>Olá " . $_SESSION['nome'] . ", você está logado!</h2>";
         }
     }
-
+//Função que interpreta um código passado por GET e exibe uma mensagem para cada erro
 function verificar_codigo() {
         if(!isset($_GET['codigo'])) {
             return;
         }
 
-        $codigo = (int)$_GET['codigo'];
-
+        $codigo = (int)$_GET['codigo'];//Garante que o código seja tratado como inteiro
+        
         switch($codigo) {
             case 0:
                 $msg = "<h3>Você não tem permissão para acessar a página requisitada</h3>";
@@ -73,19 +76,19 @@ function verificar_codigo() {
 
         echo $msg;
     }
-
+    //Verifica se o formulário não foi enviado via POST
     function form_nao_enviado() {
         return $_SERVER['REQUEST_METHOD'] !== 'POST';
     }
-
+    //Verifica se os campos de login estão em branco
     function campos_em_branco_login() {
         return empty($_POST['email']) || empty($_POST['senha']);
     }
-
+    //Verifica se os campos de cadastro estão em branco
     function campos_em_branco_cadastro() {
         return empty($_POST['nome']) || empty($_POST['cpf']) || empty($_POST['email']) || empty($_POST['senha']);
     }
-
+    //Verifica se os campos de reserva estão em branco
     function campos_em_branco_reserva() {
         return empty($_POST['checkIn']) || empty($_POST['checkOut']) || empty($_POST['quarto_id']);
     }
