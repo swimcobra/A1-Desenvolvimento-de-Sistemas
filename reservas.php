@@ -18,9 +18,9 @@
         </nav>
         
     </header>
-    
+    <hr>
     <main>
-        <hr>
+        
         <h2>Bem vindo, <?= $_SESSION['nome'] ?>!</h2>
         <h2>Cadastrar Reserva</h2>
         <form action="cadastrar_reserva.php" method="post">
@@ -76,6 +76,7 @@
             }
             echo "</table>";
         ?>
+        
     </main>
     <footer>
         <p>Site criado apenas para estudo pessoal</p>
