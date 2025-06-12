@@ -38,6 +38,7 @@
             </p>
             <button type="submit">Cadastrar</button>
         </form>
+        <br><br>
         <?php
             require_once 'require/conexao.php';
             require_once 'require/functions.php';
@@ -70,8 +71,8 @@
                 echo    "<td>" . $data_checkOut . "</td>";
                 echo    "<td>" . $id_quarto . "</td>";
                 echo    "<td>" . $id_hospede . "</td>";
-                echo    '<td><a href="edicao.php?id_reserva=' . $id_reserva . '&id_hospede=' . $id_hospede . '">Editar</a></td>';
-                echo    '<td><a href="excluir_reserva.php?id_reserva=' . $id_reserva . '&id_hospede=' . $id_hospede . '">Excluir</a></td>';
+                echo    '<td class="editar"><a class="editar" href="edicao.php?id_reserva=' . $id_reserva . '&id_hospede=' . $id_hospede . '">Editar</a></td>';
+                echo    '<td class="excluir"><a class="excluir" href="excluir_reserva.php?id_reserva=' . $id_reserva . '&id_hospede=' . $id_hospede . '">Excluir</a></td>';
                 echo "</tr>";
             }
             echo "</table>";

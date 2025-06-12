@@ -28,6 +28,27 @@
     require_once 'require/conexao.php';
     $conn = conectar_banco();
 
+    $query = "SELECT COUNT(*) AS total_quartos FROM quartos WHERE id_quarto = ?";
+    $stmt = mysqli_prepare($conn, $query);
+
+    if (!$stmt) {
+        error_log("Erro ao preparar statement de verificação de quarto: " . mysqli_error($conn));
+        header('location:reservas.php?codigo=3');
+        exit;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $quarto_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+    $quarto_existe = $row['total_quartos'];
+    mysqli_stmt_close($stmt);
+
+    if ($quarto_existe == 0) {
+        header('location:reservas.php?codigo=16'); 
+        exit;
+    }
+
     $query = "SELECT COUNT(*) AS conflitos
                 FROM reservas
                 WHERE

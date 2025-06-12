@@ -63,6 +63,9 @@ function verificar_codigo() {
             case 15:
                 $msg = "<h3>Reserva Editada com sucesso!</h3>";
                 break;
+            case 16:
+                $msg = "<h3>Erro! Quarto informado inexistente</h3>";
+                break;
             default:
                 $msg = "";
                 break;

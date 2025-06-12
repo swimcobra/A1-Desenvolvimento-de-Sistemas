@@ -66,7 +66,8 @@ footer{
 footer p{
 color: white;
 }
-//forms
+
+--forms
 
 label{
     display: block;
@@ -90,7 +91,16 @@ form button{
     padding: 5px;
 }
 
-//Table
+form button:hover {
+    background-color: #a08332;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    height: 30px;
+    padding: 5px;
+}
+
+--Table
 table {
     width: 100%;
     border-collapse: collapse;
@@ -116,4 +126,39 @@ table tr:nth-child(odd) {
 }
 table tr:hover {
     background: #d6e9ff;
+}
+table a {
+    text-decoration: none;
+}
+
+.editar {
+    background-color: rgb(27, 133, 182);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.editar:hover {
+    background-color: rgb(19, 86, 117);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.excluir {
+    background-color: rgb(189, 59, 59);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.excluir:hover {
+    background-color: rgb(150, 46, 46);
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
 }
