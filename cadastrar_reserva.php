@@ -12,15 +12,15 @@
         header('location:reservas.php?codigo=2');
         exit;
     }
-
+    //Recupera os dados enviados via POST e o ID do usuario
     $id_hospede   = $_SESSION['id']; 
     $checkIn    = $_POST['checkIn'];
     $checkOut  = $_POST['checkOut'];
     $quarto_id  = $_POST['quarto_id'];
-
+    
     require_once 'require/conexao.php';
     $conn = conectar_banco();
-
+    //Verifica se o quarto informado existe
     $query = "SELECT COUNT(*) AS total_quartos FROM quartos WHERE id_quarto = ?";
     $stmt = mysqli_prepare($conn, $query);
 
@@ -29,7 +29,7 @@
         header('location:reservas.php?codigo=3');
         exit;
     }
-
+    
     mysqli_stmt_bind_param($stmt, "i", $quarto_id);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
@@ -41,7 +41,7 @@
         header('location:reservas.php?codigo=16'); 
         exit;
     }
-
+    //Verifica se a conflitos de datas
     $query = "SELECT COUNT(*) AS conflitos
                 FROM reservas
                 WHERE
@@ -57,7 +57,7 @@
         header('location:reservas.php?codigo=3');
         exit;
     }
-
+    //Vincula os parametros da consulta
     mysqli_stmt_bind_param($stmt, "iss", $quarto_id, $checkOut, $checkIn);
 
     $result = mysqli_stmt_execute($stmt);
@@ -76,18 +76,19 @@
         header('location:reservas.php?codigo=8');
         exit;
     }
-
+    //Insere a nova reserva no bd
     $sql = "INSERT INTO reservas (checkIn, checkOut, hospede_id, quarto_id) VALUES (?, ?, ?, ?)";
-
+    
     $stmt = mysqli_prepare($conn, $sql);
     
     if(!$stmt) {
         header('location:reservas.php?codigo=3');
         exit;
     }
-
+    //vincula os valores ao statment
     mysqli_stmt_bind_param($stmt, "ssii", $checkIn, $checkOut, $id_hospede, $quarto_id);
 
+    //Executa a inserção
     if(!mysqli_stmt_execute($stmt)) {
         header('location:reservas.php?codigo=3');
         exit;
@@ -99,7 +100,7 @@
         header('location:reservas.php?codigo=5');
         exit;
     }
-
+    //Fecha statment e a conexão
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 
