@@ -48,7 +48,11 @@ Inicie o servidor web (Apache) e o MySQL através do XAMPP control panel.
 
 Abra o phpMyAdmin: http://localhost/phpmyadmin/ ou se preferir, pode abrir clicando em "admin" na linha do MySql no XAMPP control panel
 
-A partir da página incial do phpMyAdmin, clique no botão importar, localizado no topo da tela, depois clique em "choose file" e selecione o arquivo "hotelconsagrado_bd.sql", após selecionado o arquivo desça a página e clique no botão "importar". 
+A partir da página incial do phpMyAdmin, clique no botão "novo", localizado no lado esquerdo da tela, digite o nome desejado (de preferência "hotelconsagrado_bd"), depois disso clique no campo ao lado, deça até o final da lista e selecione "utf8mb4_unicode_ci". Após isso, clique no botão "criar".
+
+Isso deve ter te direcionado para uma página que te permite criar uma tabela, mas ao invés disso, você irá clicar no botão "importar" no topo da tela, que te levará para uma página onde você irá clicar em "Choose File" e selecionar o arquivo "hotelconsagradi_bd.sql". Após selecionado, é só descer a página e clicar no botão "importar".
+
+Se deu tudo certo, agora o banco de dados deve estar com a estrutura criada já com hospedes e reservas cadastradas.
 
 ### Configurar Conexão com o Banco de Dados:
 
@@ -57,10 +61,10 @@ Abra o arquivo /require/conexao.php, ele estará com o seguinte código:
 <?php 
 function conectar_banco() {
 
-    $servidor   = 'localhost:3306'; **Conferir qual porta está sendo utilizada pelo MySql no XAMPP control panel e trocar caso necessário**
+    $servidor   = 'localhost:3306'; --> Conferir qual porta está sendo utilizada pelo MySql no XAMPP control panel e trocar caso necessário
     $usuario    = 'root';
     $senha      = '';
-    $banco      = 'hotelconsagrado_bd';   
+    $banco      = 'hotelconsagrado_bd'; --> Caso você tenha escolhido criar o banco com um nome diferente do sugerido, altere o nome aqui
     
     $conn = mysqli_connect($servidor, $usuario, $senha, $banco);
 

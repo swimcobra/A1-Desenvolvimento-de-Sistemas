@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/06/2025 às 19:19
+-- Tempo de geração: 13/06/2025 às 03:02
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -89,7 +89,8 @@ CREATE TABLE `reservas` (
 
 INSERT INTO `reservas` (`id_reserva`, `checkIn`, `checkOut`, `hospede_id`, `quarto_id`) VALUES
 (5, '2025-06-12', '2025-06-18', 3, 1),
-(8, '2025-06-11', '2025-06-18', 4, 3);
+(8, '2025-06-11', '2025-06-18', 4, 3),
+(10, '2025-06-30', '2025-07-03', 4, 3);
 
 --
 -- Índices para tabelas despejadas
@@ -135,7 +136,7 @@ ALTER TABLE `quartos`
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para tabelas despejadas
